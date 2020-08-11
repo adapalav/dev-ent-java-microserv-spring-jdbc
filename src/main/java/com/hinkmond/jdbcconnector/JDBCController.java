@@ -25,6 +25,7 @@ public class JDBCController {
         JdbcTemplate jdbcTemplate = JDBCConnector.getJdbcTemplate();
         StringBuilder resultStr = new StringBuilder();
 
+//        String queryStr = "SELECT * from user_info where last_name='Doe';";
         String queryStr = "SELECT * from user_info;";
         SqlRowSet sqlRowSet = jdbcTemplate.queryForRowSet(queryStr);
         while (sqlRowSet.next()) {
@@ -37,7 +38,7 @@ public class JDBCController {
                     .append(sqlRowSet.getString("created_at"))
                     .append("\n");
         }
-        return ("SELECT * from user_info:\n" + resultStr);
+        return (queryStr + "\n" + resultStr);
     }
 
     @CrossOrigin
